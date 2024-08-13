@@ -1,0 +1,4 @@
+Ideas of what graphs to make: 
+Filters - citizenship, event_location, date of event, gender, type of injury 
+
+-Graph of common ages of people dying - Palestinian, Israel, combined 
