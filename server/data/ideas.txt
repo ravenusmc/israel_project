@@ -1,5 +1,26 @@
 Ideas of what graphs to make: 
-Filters - citizenship, event_location, date of event, gender, type of injury 
+Filters - citizenship, event_location, date of event, gender, type of injury, killed_by
 
 -Graph of common ages of people dying - Palestinian, Israel, combined 
--Graph of where people are dying. 
+-Graph of where people are dying.
+-Graph of people killed by month - date_of_event
+-Graph of looking at people who died who took_part_in_the_hostilities
+-Graph of the most common injurys - type_of_injury
+-Graph of most common ammunition used 
+-Graph of killed by - killed_by
+
+-Should I look at having a filter by killed_by?
+
+
+-Do something with the date_of_event compared to the date_of_death - how long did it take them to
+die. 
+
+
+
+
+Column names: 
+['name', 'date_of_event', 'age', 'citizenship', 
+'event_location', 'event_location_district', 
+'event_location_region', 'date_of_death', 
+'gender', 'took_part_in_the_hostilities', 'place_of_residence', 
+'place_of_residence_district', 'type_of_injury', 'ammunition', 'killed_by', 'notes']

@@ -10,7 +10,7 @@ class UnderstandCSV():
         self.data = pd.read_csv('./data/fatalities_isr_pse_conflict_2000_to_2023.csv')
 
     def columns(self):
-        print(self.data.head())
+        print(self.data.columns.tolist())
 
 
 obj = UnderstandCSV()
