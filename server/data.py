@@ -9,6 +9,5 @@ class ExamineData():
     def __init__(self):
         self.data = pd.read_csv('./data/fatalities_isr_pse_conflict_2000_to_2023.csv.csv')
 
-    # Getting the average age of deaths
     def average_age_deaths(self): 
         pass 
