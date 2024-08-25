@@ -9,5 +9,6 @@ class ExamineData():
     def __init__(self):
         self.data = pd.read_csv('./data/fatalities_isr_pse_conflict_2000_to_2023.csv.csv')
 
+    # Maybe allow to allow the user to select the year?
     def average_age_deaths(self): 
         pass 
