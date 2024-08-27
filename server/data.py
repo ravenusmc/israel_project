@@ -18,6 +18,19 @@ class ExamineData():
         avg_age_by_citizenship = df_filtered.groupby('citizenship')['age'].mean()
         return avg_age_by_citizenship
 
+    def deaths_by_group(self, year):
+        # Filter data for deaths up to the given year
+        df_filtered = self.data[self.data['date_of_death'].dt.year <= year]
+        # Group by citizenship and calculate the count
+        death_count_by_citizenship = df_filtered.groupby('citizenship')['age'].count()
+        return death_count_by_citizenship
+    
+    def deaths_by_region(self, year):
+        # Filter data for deaths up to the given year
+        df_filtered = self.data[self.data['date_of_death'].dt.year <= year]
+        event_location_region
+
 death_dataset = ExamineData()
-print(death_dataset.average_age_deaths(2010))
+# print(death_dataset.average_age_deaths(2010))
+print(death_dataset.deaths_by_group(2010))
 #Should look at average age overtime. 

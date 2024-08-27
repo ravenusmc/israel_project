@@ -1,8 +1,8 @@
 Ideas of what graphs to make: 
 Filters - citizenship, event_location, date of event, gender, type of injury, killed_by
 
--Graph of average ages of people dying - Palestinian, Israel, combined 
--Graph of number of people dying. 
+-Graph of average ages of people dying - Palestinian, Israel, combined - DONE 
+-Graph of number of people dying. - DONE 
 -Graph of where people are dying.
 -Graph of people killed by month - date_of_event
 -Graph of looking at people who died who took_part_in_the_hostilities
