@@ -28,9 +28,14 @@ class ExamineData():
     def deaths_by_region(self, year):
         # Filter data for deaths up to the given year
         df_filtered = self.data[self.data['date_of_death'].dt.year <= year]
-        event_location_region
+        death_count_by_region = df_filtered.groupby('event_location_region')['age'].count()
+        return death_count_by_region
+    
+    def deaths_of_people_took_part_in_event(self, year):
+        
+        
 
 death_dataset = ExamineData()
 # print(death_dataset.average_age_deaths(2010))
-print(death_dataset.deaths_by_group(2010))
+print(death_dataset.deaths_by_region(2020))
 #Should look at average age overtime. 
