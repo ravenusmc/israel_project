@@ -32,7 +32,10 @@ class ExamineData():
         return death_count_by_region
     
     def deaths_of_people_took_part_in_event(self, year):
-        
+        # Filter data for deaths up to the given year
+        df_filtered = self.data[self.data['date_of_death'].dt.year <= year]
+        deaths_by_taken_part = df_filtered.groupby('took_part_in_the_hostilities').count()
+        return deaths_by_taken_part
         
 
 death_dataset = ExamineData()
