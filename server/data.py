@@ -31,6 +31,7 @@ class ExamineData():
         death_count_by_region = df_filtered.groupby('event_location_region')['age'].count()
         return death_count_by_region
     
+    # I need to break this down by selected group. 
     def deaths_of_people_took_part_in_event(self, year):
         # Filter data for deaths up to the given year
         df_filtered = self.data[self.data['date_of_death'].dt.year <= year]
@@ -40,5 +41,5 @@ class ExamineData():
 
 death_dataset = ExamineData()
 # print(death_dataset.average_age_deaths(2010))
-print(death_dataset.deaths_by_region(2020))
+print(death_dataset.deaths_of_people_took_part_in_event(2020))
 #Should look at average age overtime. 
