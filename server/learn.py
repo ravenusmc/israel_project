@@ -12,6 +12,10 @@ class UnderstandCSV():
     def columns(self):
         print(self.data.columns.tolist())
 
+    def unique_values_took_part_in_the_hostilities(self):
+        print(self.data['took_part_in_the_hostilities'].unique().tolist())
+        #[nan, 'No', 'Yes', 'Unknown', 'Israelis', 'Object of targeted killing']#
+
 
 obj = UnderstandCSV()
-obj.columns()
+obj.unique_values_took_part_in_the_hostilities()
