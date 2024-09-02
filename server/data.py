@@ -30,18 +30,21 @@ class ExamineData():
         df_filtered = self.data[self.data['date_of_death'].dt.year <= year]
         death_count_by_region = df_filtered.groupby('event_location_region')['age'].count()
         return death_count_by_region
-    
-    # I need to break this down by selected group - Israeli's and Palestinians 
+
     def deaths_of_people_took_part_in_event(self, year):
-        # Filter data for deaths up to the given year
+        # Filter by year and citizenship first
         df_filtered = self.data[self.data['date_of_death'].dt.year <= year]
         df_filtered_citizenship = df_filtered[df_filtered['citizenship'] == 'Palestinian']
-        print(df_filtered_citizenship)
-        input()
-        # deaths_by_taken_part = df_filtered.groupby('took_part_in_the_hostilities').count()
-        return deaths_by_taken_part
-        
-#[nan, 'No', 'Yes', 'Unknown', 'Israelis', 'Object of targeted killing']#
+        # Define columns and participation statuses
+        columns = ['Participated', 'Count']
+        took_part_list = ['Yes', 'No']
+        # Collect counts for each participation status
+        data = []
+        for item in took_part_list:
+            count = df_filtered_citizenship[df_filtered_citizenship['took_part_in_the_hostilities'] == item].shape[0]
+            data.append([item, count])
+        return pd.DataFrame(data, columns=columns)
+    
 death_dataset = ExamineData()
 print(death_dataset.deaths_of_people_took_part_in_event(2020))
 #Should look at average age overtime. 
