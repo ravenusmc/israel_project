@@ -15,7 +15,16 @@ class UnderstandCSV():
     def unique_values_took_part_in_the_hostilities(self):
         print(self.data['took_part_in_the_hostilities'].unique().tolist())
         #[nan, 'No', 'Yes', 'Unknown', 'Israelis', 'Object of targeted killing']#
-
+    
+    def unique_values_for_common_injuries(self):
+        print(self.data['type_of_injury'].unique().tolist())
+        # ['gunfire', 'stabbing', 'hit by a vehicle', 'explosion', 'physical assault', 
+        # 'shelling', 'being bludgeoned with an axe', 'physically assaulted', 'beating', 
+        # 'stones throwing', 'Strangulation', nan, 'fire', 'house demolition']
+    
+    def unique_values_citizenship(self): 
+        print(self.data['citizenship'].unique().tolist())
+        ['Palestinian', 'Israeli', 'Jordanian', 'American']
 
 obj = UnderstandCSV()
-obj.unique_values_took_part_in_the_hostilities()
+obj.unique_values_citizenship()

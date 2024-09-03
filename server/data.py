@@ -44,7 +44,19 @@ class ExamineData():
             count = df_filtered_citizenship[df_filtered_citizenship['took_part_in_the_hostilities'] == item].shape[0]
             data.append([item, count])
         return pd.DataFrame(data, columns=columns)
+
+    def graph_of_common_injury(self, year):
+        df_filtered_by_year = self.data[self.data['date_of_death'].dt.year <= year]
+        citizenship = ['Palestinian', 'Israeli']
+        for citizen in citizenship:
+            df_filtered_citizenship = df_filtered_by_year[df_filtered_by_year['citizenship'] == citizen]
+            injury_type_by_count = df_filtered_citizenship.groupby('type_of_injury')['age'].count()
+            print(injury_type_by_count)
+            input()
     
 death_dataset = ExamineData()
-print(death_dataset.deaths_of_people_took_part_in_event(2020))
+print(death_dataset.graph_of_common_injury(2000))
+
+
+#Ideas: 
 #Should look at average age overtime. 

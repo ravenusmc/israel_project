@@ -5,7 +5,7 @@ Filters - citizenship, event_location, date of event, gender, type of injury, ki
 -Graph of number of people dying. - DONE 
 -Graph of where people are dying. - DONE
 -Graph of people killed by month - date_of_event (May not do)
--Graph of looking at people who died who took_part_in_the_hostilities
+-Graph of looking at people who died who took_part_in_the_hostilities - DONE 
 -Graph of the most common injurys - type_of_injury
 -Graph of most common ammunition used 
 -Graph of killed by - killed_by
