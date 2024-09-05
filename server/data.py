@@ -46,16 +46,25 @@ class ExamineData():
         return pd.DataFrame(data, columns=columns)
 
     def graph_of_common_injury(self, year):
+        data = []
         df_filtered_by_year = self.data[self.data['date_of_death'].dt.year <= year]
+        columns = ['Type of Injury', 'Count of Palestinian', 'Count of Israeli']
+        injuries = ['gunfire', 'stabbing', 'hit by a vehicle', 'explosion', 'physical assault', 
+        'shelling', 'being bludgeoned with an axe', 'physically assaulted', 'beating', 
+        'stones throwing', 'Strangulation', nan, 'fire', 'house demolition']
+        df_filtered_citizenship = df_filtered_by_year[df_filtered_by_year['citizenship'] == 'Palestinian']
+        injury_type_by_count = df_filtered_citizenship.groupby('type_of_injury')['age'].count()
+        #have to get injury type, counts
+        data.append([injury, p-count, i-count])
+
         citizenship = ['Palestinian', 'Israeli']
         for citizen in citizenship:
             df_filtered_citizenship = df_filtered_by_year[df_filtered_by_year['citizenship'] == citizen]
             injury_type_by_count = df_filtered_citizenship.groupby('type_of_injury')['age'].count()
-            print(injury_type_by_count)
-            input()
+
     
 death_dataset = ExamineData()
-print(death_dataset.graph_of_common_injury(2000))
+print(death_dataset.graph_of_common_injury(2010))
 
 
 #Ideas: 
