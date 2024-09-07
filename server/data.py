@@ -47,7 +47,7 @@ class ExamineData():
 
     def graph_of_common_injury(self, year):
         data = []
-        columns = ['Type of Injury', 'Count of Palestinian', 'Count of Israeli']
+        columns = ['Type of Injury', 'Palestinian Count', 'Israeli Count']
         data.append(columns)
         df_filtered_by_year = self.data[self.data['date_of_death'].dt.year <= year]
         injuries = ['gunfire', 'stabbing', 'hit by a vehicle', 'explosion', 'physical assault', 
@@ -61,11 +61,16 @@ class ExamineData():
             p_count = len(p_count_df)
             i_count = len(i_count_df)
             data.append([injury, p_count, i_count])
-       return data 
+        print(data)
+        return data 
+    
+    def common_ammunition_used(self, year):
+        df_filtered = self.data[self.data['date_of_death'].dt.year <= year]
+
 
     
 death_dataset = ExamineData()
-print(death_dataset.graph_of_common_injury(2010))
+print(death_dataset.graph_of_common_injury(2020))
 
 
 #Ideas: 
