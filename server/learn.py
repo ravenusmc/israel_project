@@ -28,7 +28,7 @@ class UnderstandCSV():
 
     def unique_ammunition(self):
         print(self.data['ammunition'].unique().tolist())
-        # ['live ammunition', 'missile', nan, 'rocket', '0.22-caliber bullets', 'bomb', 
+        # ['live ammunition', 'missile', 'rocket', '0.22-caliber bullets', 'bomb', 
         #  'knife', 'shell', 'rock', 'rubber-coated metal bullets', 'stun grenade', 
         #  'teargas canister', 'flare bomb', 'sponge rounds', 'mortar fire', 'grad rocket', 
         #  'flechette shells', 'phosphorus shell', 'Qassam rocket', 'explosive belt', 

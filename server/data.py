@@ -65,12 +65,31 @@ class ExamineData():
         return data 
     
     def common_ammunition_used(self, year):
-        df_filtered = self.data[self.data['date_of_death'].dt.year <= year]
+        columns = ['Type of Ammunition', 'Palestinian Count', 'Israeli Count']
+        data = [columns]
+        
+        # Filter data by the given year and citizenship
+        df_filtered_by_year = self.data[self.data['date_of_death'].dt.year <= year]
+        df_palestinian = df_filtered_by_year[df_filtered_by_year['citizenship'] == 'Palestinian']
+        df_israeli = df_filtered_by_year[df_filtered_by_year['citizenship'] == 'Israeli']
 
+        type_of_ammunition = ['live ammunition', 'missile', 'rocket', '0.22-caliber bullets', 'bomb', 
+                            'knife', 'shell', 'rock', 'rubber-coated metal bullets', 'stun grenade', 
+                            'teargas canister', 'flare bomb', 'sponge rounds', 'mortar fire', 
+                            'grad rocket', 'flechette shells', 'phosphorus shell', 'Qassam rocket', 
+                            'explosive belt', 'grenade', 'car bomb']
+        
+        for ammo in type_of_ammunition:
+            # Count occurrences for each type of ammunition
+            p_count = df_palestinian[df_palestinian['ammunition'] == ammo].shape[0]
+            i_count = df_israeli[df_israeli['ammunition'] == ammo].shape[0]
+            data.append([ammo, p_count, i_count])
+        print(data)
+        return data
 
     
 death_dataset = ExamineData()
-print(death_dataset.graph_of_common_injury(2020))
+print(death_dataset.common_ammunition_used(2020))
 
 
 #Ideas: 
