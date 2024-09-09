@@ -33,6 +33,10 @@ class UnderstandCSV():
         #  'teargas canister', 'flare bomb', 'sponge rounds', 'mortar fire', 'grad rocket', 
         #  'flechette shells', 'phosphorus shell', 'Qassam rocket', 'explosive belt', 
         #  'grenade', 'car bomb']
+    
+    def unique_killed_by(self):
+        print(self.data['killed_by'].unique().tolist())
+        ['Israeli security forces', 'Palestinian civilians', 'Israeli civilians']
 
 obj = UnderstandCSV()
-obj.unique_ammunition()
+obj.unique_killed_by()
