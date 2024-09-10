@@ -90,9 +90,12 @@ class ExamineData():
     # I think that for this graph I want to filter by Israeli and Palestinian and then 
     # see count of who was killed. 
     def what_killed_individual(self, year):
+        columns = ['Killed by', 'Palestinian Count', 'Israeli Count']
+        data = [columns]
         df_filtered_by_year = self.data[self.data['date_of_death'].dt.year <= year]
-
-
+        df_palestinian = df_filtered_by_year[df_filtered_by_year['citizenship'] == 'Palestinian']
+        df_israeli = df_filtered_by_year[df_filtered_by_year['citizenship'] == 'Israeli']
+        ['Israeli security forces', 'Palestinian civilians', 'Israeli civilians']
     
 death_dataset = ExamineData()
 print(death_dataset.common_ammunition_used(2020))
