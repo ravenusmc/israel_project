@@ -101,5 +101,3 @@ death_dataset = ExamineData()
 print(death_dataset.common_ammunition_used(2020))
 
 
-#Ideas: 
-#Should look at average age overtime. 

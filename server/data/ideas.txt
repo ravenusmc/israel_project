@@ -10,6 +10,9 @@ Filters - citizenship, event_location, date of event, gender, type of injury, ki
 -Graph of most common ammunition used - Done 
 -Graph of killed by - killed_by - 
 
+#Ideas: 
+#Should look at average age overtime. 
+
 -Should I look at having a filter by killed_by?
 
 
