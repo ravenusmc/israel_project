@@ -29,7 +29,7 @@ Column names:
 'gender', 'took_part_in_the_hostilities', 'place_of_residence', 
 'place_of_residence_district', 'type_of_injury', 'ammunition', 'killed_by', 'notes']
 
-Chat GPT Ideas:
+Chat GPT Ideas: (May or may not use some of these)
 
 The dataset contains the following key columns:  
 - **Name**  
