@@ -95,7 +95,7 @@ class ExamineData():
         df_filtered_by_year = self.data[self.data['date_of_death'].dt.year <= year]
         df_palestinian = df_filtered_by_year[df_filtered_by_year['citizenship'] == 'Palestinian']
         df_israeli = df_filtered_by_year[df_filtered_by_year['citizenship'] == 'Israeli']
-        ['Israeli security forces', 'Palestinian civilians', 'Israeli civilians']
+        killed_by_list = ['Israeli security forces', 'Palestinian civilians', 'Israeli civilians']
     
 death_dataset = ExamineData()
 print(death_dataset.common_ammunition_used(2020))

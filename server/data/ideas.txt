@@ -19,9 +19,6 @@ Filters - citizenship, event_location, date of event, gender, type of injury, ki
 -Do something with the date_of_event compared to the date_of_death - how long did it take them to
 die. 
 
-
-
-
 Column names: 
 ['name', 'date_of_event', 'age', 'citizenship', 
 'event_location', 'event_location_district', 
@@ -50,22 +47,33 @@ The dataset contains the following key columns:
 
 Based on this, here are some interesting graphs you could consider creating:
 
-1. **Distribution of Fatalities by Age Group**: A bar or histogram showing how fatalities are distributed across different age groups. This could highlight which age groups were most affected.
+1. **Distribution of Fatalities by Age Group**: A bar or histogram showing how fatalities 
+are distributed across different age groups. This could highlight which age groups were 
+most affected.
    
-2. **Trend of Fatalities Over Time**: A time series line graph to visualize the number of fatalities over the years, months, or days, using the "Date of Event" column.
+2. **Trend of Fatalities Over Time**: A time series line graph to visualize the number of 
+fatalities over the years, months, or days, using the "Date of Event" column.
 
-3. **Fatalities by Citizenship**: A pie chart or bar chart that breaks down the number of fatalities by citizenship (e.g., Palestinian, Israeli).
+3. **Fatalities by Citizenship**: A pie chart or bar chart that breaks down the number of 
+fatalities by citizenship (e.g., Palestinian, Israeli).
 
-4. **Geographical Distribution of Fatalities**: A map or heatmap showing fatalities based on event location (district or region), which can help identify which areas experienced more incidents.
+4. **Geographical Distribution of Fatalities**: A map or heatmap showing fatalities based on 
+event location (district or region), which can help identify which areas experienced more 
+incidents.
 
-5. **Participation in Hostilities**: A bar chart showing the number of fatalities for those who took part in hostilities versus civilians.
+5. **Participation in Hostilities**: A bar chart showing the number of fatalities for those who 
+took part in hostilities versus civilians.
 
-6. **Gender Distribution of Fatalities**: A simple bar or pie chart visualizing the gender breakdown of fatalities.
+6. **Gender Distribution of Fatalities**: A simple bar or pie chart visualizing 
+the gender breakdown of fatalities.
 
-7. **Cause of Death (Type of Injury)**: A bar chart showing the types of injuries that led to fatalities (e.g., gunfire, explosions).
+7. **Cause of Death (Type of Injury)**: A bar chart showing the types of injuries 
+that led to fatalities (e.g., gunfire, explosions).
 
-8. **Fatalities by Perpetrator ("Killed By")**: A bar chart showing the distribution of fatalities based on the responsible party (e.g., Israeli security forces, unknown).
+8. **Fatalities by Perpetrator ("Killed By")**: A bar chart showing the distribution of 
+fatalities based on the responsible party (e.g., Israeli security forces, unknown).
 
-9. **Ammunition Used in Fatalities**: A pie or bar chart visualizing the types of ammunition that were involved in the fatalities.
+9. **Ammunition Used in Fatalities**: A pie or bar chart visualizing the types of 
+ammunition that were involved in the fatalities.
 
 Which of these visualizations would you like to explore further?
