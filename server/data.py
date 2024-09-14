@@ -96,8 +96,14 @@ class ExamineData():
         df_palestinian = df_filtered_by_year[df_filtered_by_year['citizenship'] == 'Palestinian']
         df_israeli = df_filtered_by_year[df_filtered_by_year['citizenship'] == 'Israeli']
         killed_by_list = ['Israeli security forces', 'Palestinian civilians', 'Israeli civilians']
+        for kill_by in killed_by_list:
+            p_count = df_palestinian[df_palestinian['killed_by'] == kill_by].shape[0]
+            i_count = df_israeli[df_israeli['killed_by'] == kill_by].shape[0]
+            data.append([kill_by, p_count, i_count])
+        print(data)
+
     
 death_dataset = ExamineData()
-print(death_dataset.common_ammunition_used(2020))
+print(death_dataset.what_killed_individual(2020))
 
 
