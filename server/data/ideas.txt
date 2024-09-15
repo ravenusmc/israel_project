@@ -8,10 +8,11 @@ Filters - citizenship, event_location, date of event, gender, type of injury, ki
 -Graph of looking at people who died who took_part_in_the_hostilities - DONE 
 -Graph of the most common injurys - type_of_injury - DONE 
 -Graph of most common ammunition used - Done 
--Graph of killed by - killed_by - 
+-Graph of killed by - killed_by - Done 
 
 #Ideas: 
 #Should look at average age overtime. 
+    - Need min and max years 
 
 -Should I look at having a filter by killed_by?
 

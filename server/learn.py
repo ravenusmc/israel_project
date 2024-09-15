@@ -37,6 +37,14 @@ class UnderstandCSV():
     def unique_killed_by(self):
         print(self.data['killed_by'].unique().tolist())
         ['Israeli security forces', 'Palestinian civilians', 'Israeli civilians']
+    
+    def min_year_value(self): 
+        print(self.data['date_of_event'].min())
+        # Min Year is 2000
+    
+    def max_year_value(self):
+        print(self.data['date_of_event'].max())
+        # Max Year is 2023
 
 obj = UnderstandCSV()
-obj.unique_killed_by()
+obj.max_year_value()

@@ -101,6 +101,11 @@ class ExamineData():
             i_count = df_israeli[df_israeli['killed_by'] == kill_by].shape[0]
             data.append([kill_by, p_count, i_count])
         print(data)
+        return data 
+
+    def average_age_of_killed(self, year):
+        
+    
 
     
 death_dataset = ExamineData()
