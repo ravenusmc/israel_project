@@ -103,8 +103,8 @@ class ExamineData():
         print(data)
         return data 
 
-    def average_age_of_killed(self, year):
-        
+    def average_age_of_killed_by_year(self, year):
+        pass
     
 
     
