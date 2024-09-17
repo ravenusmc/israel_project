@@ -4,7 +4,7 @@
         <div class="title-div">
             <h1 class="center">Israel and Palestine</h1>
             <hr />
-            <h3 class="center">A Study of People Killed</h3>
+            <h3 class="center">A Study</h3>
         </div>
         </div>
     </div>
