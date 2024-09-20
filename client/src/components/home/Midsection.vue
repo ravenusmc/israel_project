@@ -22,6 +22,7 @@ export default {
 .pic-row {
   display: grid; 
   grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 50px;
 }
 
 .generic-pic-styling {
@@ -37,6 +38,5 @@ export default {
 .right-image {
   background: url("../../assets/images/Palestinain_flag.jpg") center/contain no-repeat;
 }
-
 
 </style>
