@@ -3,7 +3,7 @@
       <div class="pic-row">
         <div class="generic-pic-styling left-image">
         </div>
-        <div>
+        <div class="paragraph-div">
         </div>
         <div class="generic-pic-styling right-image">
         </div>
