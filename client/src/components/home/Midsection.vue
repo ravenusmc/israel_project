@@ -4,6 +4,7 @@
         <div class="generic-pic-styling left-image">
         </div>
         <div class="paragraph-div">
+          <p></p>
         </div>
         <div class="generic-pic-styling right-image">
         </div>
