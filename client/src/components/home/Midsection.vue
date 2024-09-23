@@ -30,6 +30,7 @@ export default {
   height: 60vh;
   background-size: 65%; /* Slightly increases the width */
   background-position: center center;
+  margin: 0 7% 0 7%;
 }
 
 .left-image {
