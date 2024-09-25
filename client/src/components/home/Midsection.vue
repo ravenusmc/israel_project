@@ -61,8 +61,13 @@ export default {
 }
 
 @media only screen and (max-width: 950px) {
+
   .pic-row { 
     grid-template-columns: 1fr;
+  }
+
+  .paragraph-div {
+    margin: 0 10% 0 10%;
   }
 
 }
