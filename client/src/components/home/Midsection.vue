@@ -5,16 +5,16 @@
         </div>
         <div class="paragraph-div">
           <h1 class="title center">Purpose</h1>
-          <p>As I write these words it appears that a war may erupt between Israel and Lebannon.
+          <p class="paragraph-formatting">As I write these words it appears that a war may erupt between Israel and Lebannon.
             I've built quite a few data science projects and some of them look at wars. I've always
             been fascinated with the Israeli-Palestinian conflict. 
           </p>
-          <p>
+          <p class="paragraph-formatting">
             Weeks ago, I was going through Kaggle and I found a dataset on the conflict. I started 
             to look through it and decided that I'd be using it for this project. I have quite a few 
             graphs built for this and please enter and review them. 
           </p>
-          <p>
+          <p class="paragraph-formatting">
             Finally, I will say that I'll stay fairly neutral on this conflict and let the data 
             speak for itself. Yet, I find that the data can only tell so much of a story. These 
             were real people who were killed. They had lives, families and so much to live for in 
@@ -42,14 +42,19 @@ export default {
   align-items: center;
 }
 
+.paragraph-formatting {
+  font-size: 20px;
+}
+
 .title {
   text-transform: uppercase;
 }
 
 .generic-pic-styling {
-  height: 80vh;
+  height: 300px;
   background-position: center center;
   margin: 0 7% 0 7%;
+  border-radius: 12px;
 }
 
 .left-image {
