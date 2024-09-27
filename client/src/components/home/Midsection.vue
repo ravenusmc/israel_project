@@ -75,6 +75,10 @@ export default {
     margin: 0 10% 0 10%;
   }
 
+  .paragraph-formatting {
+    font-size: 20px;
+  }
+
 }
 
 </style>
