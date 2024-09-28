@@ -65,6 +65,7 @@ export default {
   background: url("../../assets/images/Palestinain_flag.jpg") center/contain no-repeat;
 }
 
+/* Responsive elements */
 @media only screen and (max-width: 950px) {
 
   .pic-row { 
