@@ -77,7 +77,7 @@ export default {
   }
 
   .paragraph-formatting {
-    font-size: 20px;
+    font-size: 25px;
   }
 
 }
