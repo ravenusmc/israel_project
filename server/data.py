@@ -12,10 +12,22 @@ class ExamineData():
         self.data['date_of_death'] = pd.to_datetime(self.data['date_of_death'])
 
     def average_age_deaths(self, year):
+        citizen_type = ['American', 'Israeli', 'Jordanian', 'Palestinian']
+        average_age_data = []
+        
         # Filter data for deaths up to the given year
         df_filtered = self.data[self.data['date_of_death'].dt.year <= year]
+        
         # Group by citizenship and calculate the average age
-        avg_age_by_citizenship = df_filtered.groupby('citizenship')['age'].mean()
+        avg_age_by_citizenship = df_filtered.groupby('citizenship')['age'].mean().apply(np.ceil)
+        
+        count = 0
+        for citizen in citizen_type:
+            # Use .item() to convert NumPy types to native Python types
+            average_age_data.append([citizen, avg_age_by_citizenship[count].item()])
+            count += 1
+
+        print(average_age_data)
         return avg_age_by_citizenship
 
     def deaths_by_group(self, year):
@@ -109,6 +121,6 @@ class ExamineData():
 
     
 death_dataset = ExamineData()
-print(death_dataset.what_killed_individual(2020))
+print(death_dataset.average_age_deaths(2023))
 
 
