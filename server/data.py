@@ -14,27 +14,34 @@ class ExamineData():
     def average_age_deaths(self, year):
         citizen_type = ['American', 'Israeli', 'Jordanian', 'Palestinian']
         average_age_data = []
-        
         # Filter data for deaths up to the given year
         df_filtered = self.data[self.data['date_of_death'].dt.year <= year]
-        
         # Group by citizenship and calculate the average age
         avg_age_by_citizenship = df_filtered.groupby('citizenship')['age'].mean().apply(np.ceil)
-        
         count = 0
         for citizen in citizen_type:
             # Use .item() to convert NumPy types to native Python types
             average_age_data.append([citizen, avg_age_by_citizenship[count].item()])
             count += 1
-
+        # Sort the list by the average age in descending order (highest to lowest)
+        average_age_data.sort(key=lambda x: x[1], reverse=True)
         print(average_age_data)
         return avg_age_by_citizenship
 
     def deaths_by_group(self, year):
+        citizen_type = ['American', 'Israeli', 'Jordanian', 'Palestinian']
+        death_by_nationality = []
         # Filter data for deaths up to the given year
         df_filtered = self.data[self.data['date_of_death'].dt.year <= year]
         # Group by citizenship and calculate the count
         death_count_by_citizenship = df_filtered.groupby('citizenship')['age'].count()
+        count = 0
+        for citizen in citizen_type:
+            death_by_nationality.append([citizen, death_count_by_citizenship[count].item()])
+            count += 1 
+        # Sort the list by the average age in descending order (highest to lowest)
+        death_by_nationality.sort(key=lambda x: x[1], reverse=True)
+        print(death_by_nationality)
         return death_count_by_citizenship
     
     def deaths_by_region(self, year):
@@ -121,6 +128,6 @@ class ExamineData():
 
     
 death_dataset = ExamineData()
-print(death_dataset.average_age_deaths(2023))
+print(death_dataset.deaths_by_group(2023))
 
 
