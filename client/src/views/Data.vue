@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>Examining The Data</h2>
+        <h2 class="center">Examining The Data</h2>
 
         <div class="graph-area">
             <Avgage />
