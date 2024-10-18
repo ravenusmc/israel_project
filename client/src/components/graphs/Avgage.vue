@@ -133,8 +133,6 @@ export default {
         .attr("font-size", "16px")
         .attr("font-weight", "bold")
         .text("Average Age of Killed by Nationality");
-
-
     }
   }
 }
