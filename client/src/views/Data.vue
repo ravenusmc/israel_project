@@ -4,6 +4,7 @@
 
         <div class="graph-area">
             <Avgage />
+            <Deathsbygroup />
         </div>
 
     </div>
@@ -11,15 +12,21 @@
 
 <script>
 import Avgage from '@/components/graphs/Avgage.vue'
+import Deathsbygroup from '@/components/graphs/Deathsbygroup.vue'
 
 export default {
 	name: "Missing",
 	components: {
 		Avgage,
+        Deathsbygroup,
   },
 };
 
 </script>
 
 <style scoped>
+.graph-area {
+    display: grid; 
+    grid-template-columns: 1fr 1fr;
+}
 </style>
