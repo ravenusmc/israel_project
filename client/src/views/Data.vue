@@ -1,24 +1,25 @@
 <template>
     <div>
         <h2 class="center">Examining The Data</h2>
-
         <div class="graph-area">
             <Avgage />
             <Deathsbygroup />
+            <Deathsbyregion />
         </div>
-
     </div>
 </template>
 
 <script>
 import Avgage from '@/components/graphs/Avgage.vue'
 import Deathsbygroup from '@/components/graphs/Deathsbygroup.vue'
+import Deathsbyregion from '@/components/graphs/Deathsbyregion.vue'
 
 export default {
 	name: "Missing",
 	components: {
 		Avgage,
-        Deathsbygroup,
+    Deathsbygroup,
+    Deathsbyregion, 
   },
 };
 
@@ -28,5 +29,6 @@ export default {
 .graph-area {
     display: grid; 
     grid-template-columns: 1fr 1fr;
+    place-items: center; /* Centers items both horizontally and vertically */
 }
 </style>
