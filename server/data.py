@@ -70,6 +70,7 @@ class ExamineData():
         for item in took_part_list:
             count = df_filtered_citizenship[df_filtered_citizenship['took_part_in_the_hostilities'] == item].shape[0]
             data.append([item, count])
+        print(data)
         return pd.DataFrame(data, columns=columns)
 
     def graph_of_common_injury(self, year):
@@ -136,6 +137,6 @@ class ExamineData():
 
     
 death_dataset = ExamineData()
-print(death_dataset.deaths_by_region(2023))
+print(death_dataset.deaths_of_people_took_part_in_event(2023))
 
 
