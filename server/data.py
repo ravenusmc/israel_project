@@ -20,13 +20,15 @@ class ExamineData():
         avg_age_by_citizenship = df_filtered.groupby('citizenship')['age'].mean().apply(np.ceil)
         count = 0
         for citizen in citizen_type:
-            # Use .item() to convert NumPy types to native Python types
-            average_age_data.append([citizen, avg_age_by_citizenship[count].item()])
+            if citizen in avg_age_by_citizenship.index:  # Check if citizen exists in the group
+                average_age_data.append([citizen, avg_age_by_citizenship[citizen].item()])
+            else:
+                average_age_data.append([citizen, None])
             count += 1
-        # Sort the list by the average age in descending order (highest to lowest)
-        average_age_data.sort(key=lambda x: x[1], reverse=True)
-        print(average_age_data)
-        return avg_age_by_citizenship
+        # Sort the list, treating None as the lowest value
+        average_age_data.sort(key=lambda x: (x[1] is None, x[1]), reverse=True)
+        # print(average_age_data)
+        return average_age_data
 
     def deaths_by_group(self, year):
         citizen_type = ['American', 'Israeli', 'Jordanian', 'Palestinian']
@@ -136,7 +138,7 @@ class ExamineData():
     
 
     
-death_dataset = ExamineData()
-print(death_dataset.deaths_of_people_took_part_in_event(2023))
+# death_dataset = ExamineData()
+# print(death_dataset.deaths_of_people_took_part_in_event(2023))
 
 

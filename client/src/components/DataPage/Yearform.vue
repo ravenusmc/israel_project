@@ -22,7 +22,7 @@ export default {
   name: "Yearform",
   data() {
     return {
-      year: 2000,
+      year: 2023,
     };
   },
   methods: {
@@ -32,7 +32,7 @@ export default {
       if (this.year < 2000) {
         alert("Please Select a year greater than or equal to 2000");
       } else if (this.year > 2023) {
-        alert("Please Select a Year Less than pr equal to 2023");
+        alert("Please Select a Year Less than or equal to 2023");
       } else {
         const payload = {
           year: this.year,
