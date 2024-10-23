@@ -37,14 +37,15 @@ class ExamineData():
         df_filtered = self.data[self.data['date_of_death'].dt.year <= year]
         # Group by citizenship and calculate the count
         death_count_by_citizenship = df_filtered.groupby('citizenship')['age'].count()
-        count = 0
         for citizen in citizen_type:
-            death_by_nationality.append([citizen, death_count_by_citizenship[count].item()])
-            count += 1 
-        # Sort the list by the average age in descending order (highest to lowest)
-        death_by_nationality.sort(key=lambda x: x[1], reverse=True)
-        print(death_by_nationality)
-        return death_count_by_citizenship
+            if citizen in death_count_by_citizenship.index: 
+                death_by_nationality.append([citizen, death_count_by_citizenship[citizen].item()])
+            else: 
+                death_by_nationality.append([citizen, None])
+        # Sort the list, treating None as the lowest value
+        death_by_nationality.sort(key=lambda x: (x[1] is None, x[1]), reverse=True)
+        return death_by_nationality
+
     
     def deaths_by_region(self, year):
         regions = ['Gaza Strip', 'Israel', 'West Bank']

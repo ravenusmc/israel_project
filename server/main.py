@@ -22,6 +22,8 @@ def getDataForGraphs():
         year = int(post_data['year'])
         average_age_data = get_data_object.average_age_deaths(year)
         data_dictionary['average_age_data'] = average_age_data
+        deaths_by_group_data = get_data_object.deaths_by_group(year)
+        data_dictionary['deaths_by_group_data'] = deaths_by_group_data
         print(data_dictionary)
         return jsonify(data_dictionary)
 

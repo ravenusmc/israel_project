@@ -13,11 +13,18 @@ const data = {
         ['Palestinian', 26.0],
         ['American', 16.0], 
       ],
+	DeathsByGroupData: [
+        ['Palestinian', 9973], 
+        ['Israeli', 1019], 
+        ['Jordanian', 2], 
+        ['American', 1]
+    ],
 };
 
 const getters = {
 	year: (state) => state.year,
 	averageAgaData: (state) => state.averageAgaData,
+	DeathsByGroupData: (state) => state.DeathsByGroupData
 };
 
 const actions = {
@@ -29,6 +36,7 @@ const actions = {
 			.then((res) => {
 				console.log(res.data)
 				commit('setAverageAgaData', res.data['average_age_data'])
+				commit('setDeathsByGroupData', res.data['deaths_by_group_data'])
 			})
 			.catch((error) => {
 				console.log(error);
@@ -45,6 +53,10 @@ const mutations = {
 	setAverageAgaData(state, value) {
 		state.averageAgaData = value 
 	},
+
+	setDeathsByGroupData(state, value) {
+		state.DeathsByGroupData = value
+	}, 
 
 };
 
