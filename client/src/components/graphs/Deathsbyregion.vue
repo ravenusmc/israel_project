@@ -1,19 +1,35 @@
 <template>
     <div>
-        <div id="DeathsByRegionGraph"></div>
+        <div ref="DeathsByRegionGraph"></div>
     </div>
 </template>
 
 <script>
 import * as d3 from "d3";
+import { mapGetters, } from "vuex";
 
 export default {
   name: "Deathsbyregion",
+  computed: {
+    ...mapGetters("datapage", [
+      "DeathsByRegionData",
+    ]),
+  },
+  watch: {
+    DeathsByRegionData: {
+      handler: "createDeathsByRegionGraph",
+      deep: true,
+    },
+  },
   mounted() {
-    this.createGraphThree();
+    this.createDeathsByRegionGraph();
   },  
   methods: {
-    createGraphThree() {
+    createDeathsByRegionGraph() {
+
+      // Clear previous SVG elements
+      d3.select(this.$refs.DeathsByRegionGraph).select("svg").remove();
+
       // set the dimensions and margins of the graph
       let margin = { top: 50, right: 30, bottom: 50, left: 70 };
       let width = 460 - margin.left - margin.right;
@@ -21,24 +37,18 @@ export default {
 
       // append the svg object to the div with id "graphFive"
       let svg = d3
-        .select("#DeathsByRegionGraph")
+        .select(this.$refs.DeathsByRegionGraph)
         .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-      let data = [
-        ['Gaza Strip', 7664], 
-        ['West Bank', 2658], 
-        ['Israel', 673]
-      ]
-
       // Add X axis
       let x = d3
         .scaleBand()
         .range([0, width])
-        .domain(data.map((d) => d[0]))
+        .domain(this.DeathsByRegionData.map((d) => d[0]))
         .padding(0.2);
       svg
         .append("g")
@@ -48,7 +58,7 @@ export default {
       // Add Y axis
       let y = d3
         .scaleLinear()
-        .domain([0, d3.max(data, (d) => d[1])])
+        .domain([0, d3.max(this.DeathsByRegionData, (d) => d[1])])
         .range([height, 0]);
       svg.append("g").call(d3.axisLeft(y));
 
@@ -87,7 +97,7 @@ export default {
       // Add bars
       svg
         .selectAll("rect")
-        .data(data)
+        .data(this.DeathsByRegionData)
         .enter()
         .append("rect")
         .attr("x", (d) => x(d[0]))
@@ -95,9 +105,6 @@ export default {
         .attr("width", x.bandwidth())
         .attr("height", (d) => height - y(d[1]))
         .attr("fill", "#0B90CA")
-        // .on("click", async (event, d) => {
-        //   await this.handleBarClick(d);
-        // })
         .on("mouseover", showTooltip)
         .on("mousemove", moveTooltip)
         .on("mouseleave", hideTooltip);

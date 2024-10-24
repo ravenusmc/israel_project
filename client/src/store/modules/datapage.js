@@ -19,12 +19,18 @@ const data = {
         ['Jordanian', 2], 
         ['American', 1]
     ],
+	DeathsByRegionData: [
+        ['Gaza Strip', 7664], 
+        ['West Bank', 2658], 
+        ['Israel', 673]
+      ],
 };
 
 const getters = {
 	year: (state) => state.year,
 	averageAgaData: (state) => state.averageAgaData,
-	DeathsByGroupData: (state) => state.DeathsByGroupData
+	DeathsByGroupData: (state) => state.DeathsByGroupData,
+	DeathsByRegionData: (state) => state.DeathsByRegionData,
 };
 
 const actions = {
@@ -37,6 +43,7 @@ const actions = {
 				console.log(res.data)
 				commit('setAverageAgaData', res.data['average_age_data'])
 				commit('setDeathsByGroupData', res.data['deaths_by_group_data'])
+				// commit('setDeathsByRegionData', res.data[''])
 			})
 			.catch((error) => {
 				console.log(error);
@@ -56,6 +63,10 @@ const mutations = {
 
 	setDeathsByGroupData(state, value) {
 		state.DeathsByGroupData = value
+	}, 
+
+	setDeathsByRegionData(state,value) {
+		state.DeathsByRegionData = value
 	}, 
 
 };

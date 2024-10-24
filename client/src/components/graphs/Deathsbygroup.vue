@@ -24,7 +24,6 @@ export default {
   mounted() {
     this.createDeathsByGroupGraph();
   },  
-
   methods: {
     createDeathsByGroupGraph() {
       // Clear previous SVG elements
