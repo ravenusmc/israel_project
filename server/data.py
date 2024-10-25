@@ -53,13 +53,14 @@ class ExamineData():
         # Filter data for deaths up to the given year
         df_filtered = self.data[self.data['date_of_death'].dt.year <= year]
         death_count_by_region = df_filtered.groupby('event_location_region')['age'].count()
-        count = 0 
         for region in regions: 
-            deaths_by_region.append([region, death_count_by_region[count].item()])
-            count += 1
-        deaths_by_region.sort(key=lambda x: x[1], reverse=True)
-        print(deaths_by_region)
-        return death_count_by_region
+            if region in death_count_by_region.index: 
+                deaths_by_region.append([region, death_count_by_region[region].item()])
+            else: 
+                deaths_by_region.append([region, None])
+        deaths_by_region.sort(key=lambda x: (x[1] is None, x[1]), reverse=True)
+        # print(deaths_by_region)
+        return deaths_by_region
 
     def deaths_of_people_took_part_in_event(self, year):
         # Filter by year and citizenship first

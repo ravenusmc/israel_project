@@ -64,7 +64,7 @@ export default {
 
       // Create a tooltip div
       let tooltip = d3
-        .select("#DeathsByGroupGraph")
+        .select(this.$refs.DeathsByRegionGraph)
         .append("div")
         .style("opacity", 0)
         .attr("class", "tooltip")

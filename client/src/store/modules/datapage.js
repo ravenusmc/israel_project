@@ -43,7 +43,7 @@ const actions = {
 				console.log(res.data)
 				commit('setAverageAgaData', res.data['average_age_data'])
 				commit('setDeathsByGroupData', res.data['deaths_by_group_data'])
-				// commit('setDeathsByRegionData', res.data[''])
+				commit('setDeathsByRegionData', res.data['death_count_by_region'])
 			})
 			.catch((error) => {
 				console.log(error);
