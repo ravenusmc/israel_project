@@ -24,6 +24,7 @@ const data = {
         ['West Bank', 2658], 
         ['Israel', 673]
       ],
+	DeathsOfPeopleInEventData: [],
 };
 
 const getters = {
@@ -31,6 +32,7 @@ const getters = {
 	averageAgaData: (state) => state.averageAgaData,
 	DeathsByGroupData: (state) => state.DeathsByGroupData,
 	DeathsByRegionData: (state) => state.DeathsByRegionData,
+	DeathsOfPeopleInEventData: (state) => state.DeathsOfPeopleInEventData,
 };
 
 const actions = {
@@ -68,6 +70,10 @@ const mutations = {
 	setDeathsByRegionData(state,value) {
 		state.DeathsByRegionData = value
 	}, 
+
+	setDeathsOfPeopleInEventData(state, value) {
+		state.DeathsOfPeopleInEventData = value
+	},
 
 };
 

@@ -6,6 +6,7 @@
             <Avgage />
             <Deathsbygroup />
             <Deathsbyregion />
+            <DeathsOfPeopleInEventGraph />
         </div>
     </div>
 </template>
@@ -15,6 +16,7 @@ import yearform from '@/components/datapage/Yearform.vue'
 import Avgage from '@/components/graphs/Avgage.vue'
 import Deathsbygroup from '@/components/graphs/Deathsbygroup.vue'
 import Deathsbyregion from '@/components/graphs/Deathsbyregion.vue'
+import DeathsOfPeopleInEventGraph from '@/components/graphs/Deathsofpeopleinevent.vue'
 
 export default {
 	name: "Missing",
@@ -22,7 +24,8 @@ export default {
     yearform,
 	Avgage,
     Deathsbygroup,
-    Deathsbyregion, 
+    Deathsbyregion,
+    DeathsOfPeopleInEventGraph, 
   },
 };
 

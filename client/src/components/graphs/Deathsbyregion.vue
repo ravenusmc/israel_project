@@ -95,19 +95,26 @@ export default {
       };
 
       // Add bars
-      svg
+      let bars = svg
         .selectAll("rect")
-        .data(this.DeathsByRegionData)
-        .enter()
-        .append("rect")
-        .attr("x", (d) => x(d[0]))
-        .attr("y", (d) => y(d[1]))
-        .attr("width", x.bandwidth())
-        .attr("height", (d) => height - y(d[1]))
-        .attr("fill", "#0B90CA")
-        .on("mouseover", showTooltip)
-        .on("mousemove", moveTooltip)
-        .on("mouseleave", hideTooltip);
+        .data(this.DeathsByRegionData);
+
+        // Enter new bars
+        bars
+          .enter()
+          .append("rect")
+          .attr("x", (d) => x(d[0]))
+          .attr("y", height) // Initial position at the bottom of the chart
+          .attr("width", x.bandwidth())
+          .attr("height", 0) // Initial height 0 (so it grows with the animation)
+          .attr("fill", "#0B90CA")
+          .on("mouseover", showTooltip)
+          .on("mousemove", moveTooltip)
+          .on("mouseleave", hideTooltip)
+          .transition() // Apply transition for the animation
+          .duration(1500)
+          .attr("y", (d) => y(d[1])) // Final Y position
+          .attr("height", (d) => height - y(d[1])); // Final height after transition
       
       // Add X axis label
       svg
