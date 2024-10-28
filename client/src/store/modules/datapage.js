@@ -23,8 +23,11 @@ const data = {
         ['Gaza Strip', 7664], 
         ['West Bank', 2658], 
         ['Israel', 673]
-      ],
-	DeathsOfPeopleInEventData: [],
+    ],
+	DeathsOfPeopleInEventData: [
+		['Yes', 3466], 
+		['No', 4652]
+	],
 };
 
 const getters = {

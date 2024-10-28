@@ -28,7 +28,6 @@ def getDataForGraphs():
         data_dictionary['death_count_by_region'] = death_count_by_region
         took_part_in_event = get_data_object.deaths_of_people_took_part_in_event(year)
         data_dictionary['took_part_in_event'] = took_part_in_event
-        # print(data_dictionary)
         return jsonify(data_dictionary)
 
 

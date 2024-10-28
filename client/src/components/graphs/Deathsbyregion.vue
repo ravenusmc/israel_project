@@ -35,7 +35,7 @@ export default {
       let width = 460 - margin.left - margin.right;
       let height = 400 - margin.top - margin.bottom;
 
-      // append the svg object to the div with id "graphFive"
+      // append the svg object to the div 
       let svg = d3
         .select(this.$refs.DeathsByRegionGraph)
         .append("svg")
