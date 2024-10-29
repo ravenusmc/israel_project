@@ -92,7 +92,7 @@ class ExamineData():
             p_count = len(p_count_df)
             i_count = len(i_count_df)
             data.append([injury, p_count, i_count])
-        print(data)
+        # print(data)
         return data 
     
     def common_ammunition_used(self, year):
@@ -139,7 +139,7 @@ class ExamineData():
     
 
     
-# death_dataset = ExamineData()
-# print(death_dataset.deaths_of_people_took_part_in_event(2023))
+death_dataset = ExamineData()
+print(death_dataset.graph_of_common_injury(2023))
 
 

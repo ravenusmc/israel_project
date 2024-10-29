@@ -28,6 +28,20 @@ const data = {
 		['Yes', 3466], 
 		['No', 4652]
 	],
+	typeOfInjuryData: [
+		['gunfire', 9408, 438], 
+		['stabbing', 5, 43], 
+		['hit by a vehicle', 4, 14], 
+		['explosion', 47, 508], 
+		['physical assault', 0, 1], 
+		['shelling', 311, 0], 
+		['being bludgeoned with an axe', 0, 4], 
+		['physically assaulted', 1, 1], 
+		['beating', 5, 4], 
+		['stones throwing', 2, 4], 
+		['Strangulation', 0, 1], 
+		['fire', 4, 0], 
+		['house demolition', 25, 0]]
 };
 
 const getters = {
@@ -36,6 +50,7 @@ const getters = {
 	DeathsByGroupData: (state) => state.DeathsByGroupData,
 	DeathsByRegionData: (state) => state.DeathsByRegionData,
 	DeathsOfPeopleInEventData: (state) => state.DeathsOfPeopleInEventData,
+	typeOfInjuryData: (state) => state.typeOfInjuryData,
 };
 
 const actions = {
@@ -49,6 +64,7 @@ const actions = {
 				commit('setAverageAgaData', res.data['average_age_data'])
 				commit('setDeathsByGroupData', res.data['deaths_by_group_data'])
 				commit('setDeathsByRegionData', res.data['death_count_by_region'])
+				// commit('setTypeOfInjuryData', res.data)
 			})
 			.catch((error) => {
 				console.log(error);
@@ -76,6 +92,10 @@ const mutations = {
 
 	setDeathsOfPeopleInEventData(state, value) {
 		state.DeathsOfPeopleInEventData = value
+	},
+
+	setTypeOfInjuryData(state, value) {
+		state.typeOfInjuryData = value
 	},
 
 };

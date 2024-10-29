@@ -7,6 +7,7 @@
             <Deathsbygroup />
             <Deathsbyregion />
             <DeathsOfPeopleInEventGraph />
+            <Injurytypegraph />
         </div>
     </div>
 </template>
@@ -17,6 +18,7 @@ import Avgage from '@/components/graphs/Avgage.vue'
 import Deathsbygroup from '@/components/graphs/Deathsbygroup.vue'
 import Deathsbyregion from '@/components/graphs/Deathsbyregion.vue'
 import DeathsOfPeopleInEventGraph from '@/components/graphs/Deathsofpeopleinevent.vue'
+import Injurytypegraph from '@/components/graphs/Injurytypegraph.vue'
 
 export default {
 	name: "Missing",
@@ -26,6 +28,7 @@ export default {
     Deathsbygroup,
     Deathsbyregion,
     DeathsOfPeopleInEventGraph, 
+    Injurytypegraph,
   },
 };
 
