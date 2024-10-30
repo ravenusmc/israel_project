@@ -94,7 +94,7 @@ export default {
         tooltip.style("opacity", 0);
       };
 
-            // Add bars
+      // Add bars
       let bars = svg
         .selectAll("rect")
         .data(this.DeathsOfPeopleInEventData);
