@@ -1,3 +1,4 @@
+<!-- I may use this graph as well not sure. -->
 <template>
     <div>
         <div ref="TypeofInjuryGraph"></div>
