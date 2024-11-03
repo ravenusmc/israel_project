@@ -18,10 +18,13 @@
 import { mapActions } from "vuex";
 
 export default {
-  name: "Yearform",
+  name: "Injuryform",
   data() {
     return {
-      year: 2023,
+      selectedInjury: 'gunfire',
+      injuries: ['gunfire', 'stabbing', 'hit by a vehicle', 'explosion', 'physical assault', 
+        'shelling', 'being bludgeoned with an axe', 'physically assaulted', 'beating', 
+        'stones throwing', 'Strangulation', 'fire', 'house demolition']
     };
   },
   methods: {
@@ -42,4 +45,3 @@ export default {
   },
 };
 </script>
-  

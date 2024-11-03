@@ -7,6 +7,7 @@
             <Deathsbygroup />
             <Deathsbyregion />
             <DeathsOfPeopleInEventGraph />
+            <hr>
             <Injurytypegraph />
         </div>
     </div>

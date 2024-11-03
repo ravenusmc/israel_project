@@ -1,6 +1,7 @@
 <template>
     <div>
         <div ref="TypeofInjuryGraph"></div>
+        graph 
     </div>
 </template>
 
