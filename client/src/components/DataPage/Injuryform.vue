@@ -4,11 +4,18 @@
         <form>
           <div>
             <label for="year">Enter Year:</label>
-            <input v-model="year" />
+            <input v-model="yearTwo" />
           </div>
-          <div class="form-group">
-            <button class='styled-button' type="button" @click="submitSelectedYear">Submit</button>
-          </div>
+          <label for="genres">Select Injury:</label>
+          <select v-model="selectedInjury">
+            <option disabled value="">Please select one</option>
+            <option v-for="injury in injuries" :key="injury" :value="injury">
+              {{ injury }}
+            </option>
+          </select>
+            <div class="form-group">
+              <button class='styled-button' type="button" @click="submitInjuryAndYearToServer">Submit</button>
+            </div>
         </form>
       </div>
     </div>
@@ -21,6 +28,7 @@ export default {
   name: "Injuryform",
   data() {
     return {
+      yearTwo: 2023,
       selectedInjury: 'gunfire',
       injuries: ['gunfire', 'stabbing', 'hit by a vehicle', 'explosion', 'physical assault', 
         'shelling', 'being bludgeoned with an axe', 'physically assaulted', 'beating', 
@@ -28,18 +36,19 @@ export default {
     };
   },
   methods: {
-    ...mapActions("datapage", ["submitSelectedYearToServer"]),
-    submitSelectedYear() {
+    ...mapActions("datapage", ["submitSelectedInjuryAndYearToServer"]),
+    submitInjuryAndYearToServer() {
       event.preventDefault();
-      if (this.year < 2000) {
+      if (this.yearTwo < 2000) {
         alert("Please Select a year greater than or equal to 2000");
-      } else if (this.year > 2023) {
+      } else if (this.yearTwo > 2023) {
         alert("Please Select a Year Less than or equal to 2023");
       } else {
         const payload = {
-          year: this.year,
+          yearTwo: this.yearTwo,
+          injury: this.selectedInjury,
         };
-        this.submitSelectedYearToServer({ payload });
+        this.submitSelectedInjuryAndYearToServer({ payload });
       }
     },
   },

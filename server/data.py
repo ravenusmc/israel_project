@@ -139,7 +139,7 @@ class ExamineData():
     
 
     
-death_dataset = ExamineData()
-print(death_dataset.graph_of_common_injury(2023))
+# death_dataset = ExamineData()
+# print(death_dataset.graph_of_common_injury(2023))
 
 

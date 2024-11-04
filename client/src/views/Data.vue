@@ -3,12 +3,15 @@
         <h2 class="center">Examining The Data</h2>
         <yearform />
         <div class="graph-area">
-            <Avgage />
-            <Deathsbygroup />
-            <Deathsbyregion />
-            <DeathsOfPeopleInEventGraph />
-            <hr>
-            <Injurytypegraph />
+          <Avgage />
+          <Deathsbygroup />
+          <Deathsbyregion />
+          <DeathsOfPeopleInEventGraph />
+        </div>
+        <hr>
+        <div>
+          <InjuryForm />
+          <Injurytypegraph />
         </div>
     </div>
 </template>
@@ -19,16 +22,18 @@ import Avgage from '@/components/graphs/Avgage.vue'
 import Deathsbygroup from '@/components/graphs/Deathsbygroup.vue'
 import Deathsbyregion from '@/components/graphs/Deathsbyregion.vue'
 import DeathsOfPeopleInEventGraph from '@/components/graphs/Deathsofpeopleinevent.vue'
+import InjuryForm from '@/components/datapage/Injuryform.vue'
 import Injurytypegraph from '@/components/graphs/Injurytypegraph.vue'
 
 export default {
 	name: "Missing",
 	components: {
     yearform,
-	Avgage,
+	  Avgage,
     Deathsbygroup,
     Deathsbyregion,
     DeathsOfPeopleInEventGraph, 
+    InjuryForm,
     Injurytypegraph,
   },
 };

@@ -7,6 +7,7 @@ Vue.use(Vuex);
 
 const data = {
 	year: 2023,
+	yearTwo: 2023, 
 	averageAgaData: [
         ['Israeli', 36.0],
         ['Jordanian', 33.0], 
@@ -46,6 +47,7 @@ const data = {
 
 const getters = {
 	year: (state) => state.year,
+	yearTwo: (state) => state.yearTwo,
 	averageAgaData: (state) => state.averageAgaData,
 	DeathsByGroupData: (state) => state.DeathsByGroupData,
 	DeathsByRegionData: (state) => state.DeathsByRegionData,
@@ -64,11 +66,22 @@ const actions = {
 				commit('setAverageAgaData', res.data['average_age_data'])
 				commit('setDeathsByGroupData', res.data['deaths_by_group_data'])
 				commit('setDeathsByRegionData', res.data['death_count_by_region'])
-				// commit('setTypeOfInjuryData', res.data)
 			})
 			.catch((error) => {
 				console.log(error);
 			});
+	},
+
+	submitSelectedInjuryAndYearToServer: ({commit}, { payload }) => {
+		commit('setYearTwo', payload['yearTwo'])
+		const path = 'http://localhost:5000/getDataForGraphsTwo';
+		axios.post(path, payload)
+		.then((res) => {
+			commit('setTypeOfInjuryData', res.data)
+		})
+		.catch((error) => {
+			console.log(error);
+		});
 	},
 };
 
@@ -76,6 +89,10 @@ const mutations = {
 
 	setYear(state, value) {
 		state.year = value;
+	},
+
+	setYearTwo(state, value) {
+		state.yearTwo = value
 	},
 
 	setAverageAgaData(state, value) {
