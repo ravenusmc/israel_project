@@ -34,20 +34,14 @@ def getDataForGraphs():
 @app.route('/getDataForGraphsTwo', methods=['GET', 'POST'])
 def getDataForGraphsTwo():
     if request.method == 'POST':
-        data_dictionary = {}
+        data_dictionary_second_set_graphs = {}
         get_data_object = ExamineData()
         post_data = request.get_json()
-        print(post_data)
-        # year = int(post_data['year'])
-        # average_age_data = get_data_object.average_age_deaths(year)
-        # data_dictionary['average_age_data'] = average_age_data
-        # deaths_by_group_data = get_data_object.deaths_by_group(year)
-        # data_dictionary['deaths_by_group_data'] = deaths_by_group_data
-        # death_count_by_region = get_data_object.deaths_by_region(year)
-        # data_dictionary['death_count_by_region'] = death_count_by_region
-        # took_part_in_event = get_data_object.deaths_of_people_took_part_in_event(year)
-        # data_dictionary['took_part_in_event'] = took_part_in_event
-        return jsonify('5')
+        year = int(post_data['yearTwo'])
+        injury = post_data['injury']
+        injury_data = get_data_object.graph_of_common_injury(year, injury)
+        data_dictionary_second_set_graphs['injury_data'] = injury_data
+        return jsonify(data_dictionary_second_set_graphs)
 
 
 if __name__ == '__main__':

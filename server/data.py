@@ -76,24 +76,38 @@ class ExamineData():
             took_part_in_event.append([item, count])
         return took_part_in_event
 
-    def graph_of_common_injury(self, year):
-        data = []
+    def graph_of_common_injury(self, year, injury):
+        injury_data = []
         columns = ['Type of Injury', 'Palestinian Count', 'Israeli Count']
-        data.append(columns)
+        injury_data.append(columns)
         df_filtered_by_year = self.data[self.data['date_of_death'].dt.year <= year]
-        injuries = ['gunfire', 'stabbing', 'hit by a vehicle', 'explosion', 'physical assault', 
-        'shelling', 'being bludgeoned with an axe', 'physically assaulted', 'beating', 
-        'stones throwing', 'Strangulation', 'fire', 'house demolition']
-        for injury in injuries: 
-            df_filtered_palestinian = df_filtered_by_year[df_filtered_by_year['citizenship'] == 'Palestinian']
-            df_filtered_israeli = df_filtered_by_year[df_filtered_by_year['citizenship'] == 'Israeli']
-            p_count_df = df_filtered_palestinian[df_filtered_palestinian['type_of_injury'] == injury]
-            i_count_df = df_filtered_israeli[df_filtered_israeli['type_of_injury'] == injury]
-            p_count = len(p_count_df)
-            i_count = len(i_count_df)
-            data.append([injury, p_count, i_count])
-        # print(data)
-        return data 
+        df_filtered_palestinian = df_filtered_by_year[df_filtered_by_year['citizenship'] == 'Palestinian']
+        df_filtered_israeli = df_filtered_by_year[df_filtered_by_year['citizenship'] == 'Israeli']
+        p_count_df = df_filtered_palestinian[df_filtered_palestinian['type_of_injury'] == injury]
+        i_count_df = df_filtered_israeli[df_filtered_israeli['type_of_injury'] == injury]
+        p_count = len(p_count_df)
+        i_count = len(i_count_df)
+        injury_data.append([injury, p_count, i_count])
+        return injury_data 
+
+    # I may use this graph down the line. 
+    # def graph_of_common_injury(self, year):
+    #     data = []
+    #     columns = ['Type of Injury', 'Palestinian Count', 'Israeli Count']
+    #     data.append(columns)
+    #     df_filtered_by_year = self.data[self.data['date_of_death'].dt.year <= year]
+    #     injuries = ['gunfire', 'stabbing', 'hit by a vehicle', 'explosion', 'physical assault', 
+    #     'shelling', 'being bludgeoned with an axe', 'physically assaulted', 'beating', 
+    #     'stones throwing', 'Strangulation', 'fire', 'house demolition']
+    #     for injury in injuries: 
+    #         df_filtered_palestinian = df_filtered_by_year[df_filtered_by_year['citizenship'] == 'Palestinian']
+    #         df_filtered_israeli = df_filtered_by_year[df_filtered_by_year['citizenship'] == 'Israeli']
+    #         p_count_df = df_filtered_palestinian[df_filtered_palestinian['type_of_injury'] == injury]
+    #         i_count_df = df_filtered_israeli[df_filtered_israeli['type_of_injury'] == injury]
+    #         p_count = len(p_count_df)
+    #         i_count = len(i_count_df)
+    #         data.append([injury, p_count, i_count])
+    #     return data 
     
     def common_ammunition_used(self, year):
         columns = ['Type of Ammunition', 'Palestinian Count', 'Israeli Count']

@@ -77,7 +77,8 @@ const actions = {
 		const path = 'http://localhost:5000/getDataForGraphsTwo';
 		axios.post(path, payload)
 		.then((res) => {
-			commit('setTypeOfInjuryData', res.data)
+      console.log(res.data)
+			commit('setTypeOfInjuryData', res.data['injury_data'])
 		})
 		.catch((error) => {
 			console.log(error);
