@@ -29,8 +29,6 @@ export default {
       // Clear previous SVG elements
       d3.select(this.$refs.AverageAge).select("svg").remove();
 
-      // console.log(this.averageAgaData)
-
       // set the dimensions and margins of the graph
       let margin = { top: 50, right: 30, bottom: 50, left: 70 };
       let width = 460 - margin.left - margin.right;
