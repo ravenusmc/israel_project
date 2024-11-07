@@ -1,18 +1,25 @@
 <template>
     <div>
         <div ref="TypeofInjuryGraph"></div> 
+        <Hideinjurygraph v-if="hideInjuryGraph" />
+        {{ hideInjuryGraph }}
     </div>
 </template>
 
 <script>
 import * as d3 from "d3";
 import { mapGetters, } from "vuex";
+import Hideinjurygraph from '@/components/support/Hideinjurygraph.vue'
 
 export default {
     name: "TypeOfInjuryGraph",
+    components: {
+      Hideinjurygraph, 
+    },
     computed: {
     ...mapGetters("datapage", [
       "typeOfInjuryData",
+      "hideInjuryGraph",
     ]),
   },
   watch: {
@@ -50,7 +57,6 @@ export default {
       .range(["#0B90CA", "#FF5733"]); // Colors for each category
 
     // Process data for the pie chart
-    // const data = { "Palestinian Count": 9408, "Israeli Count": 438 };
     const data = this.typeOfInjuryData;
 
     // Generate the pie chart data
@@ -63,9 +69,6 @@ export default {
     const arc = d3.arc()
       .innerRadius(0)
       .outerRadius(radius);
-    
-    console.log('here')
-    console.log(this.typeOfInjuryData)
 
     // Create a tooltip
     const tooltip = d3

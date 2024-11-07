@@ -30,6 +30,7 @@ const data = {
 		['No', 4652]
 	],
 	typeOfInjuryData: {'Palestinian Count': 9408, 'Israeli Count': 438},
+	hideInjuryGraph: false,
 };
 
 const getters = {
@@ -40,6 +41,7 @@ const getters = {
 	DeathsByRegionData: (state) => state.DeathsByRegionData,
 	DeathsOfPeopleInEventData: (state) => state.DeathsOfPeopleInEventData,
 	typeOfInjuryData: (state) => state.typeOfInjuryData,
+	hideInjuryGraph: (state) => state.hideInjuryGraph,
 };
 
 const actions = {
@@ -66,6 +68,9 @@ const actions = {
 		.then((res) => {
       console.log(res.data)
 			console.log(res.data)
+			if (res.data['injury_data']['Israeli Count'] === 0 && res.data['injury_data']['Palestinian Count'] === 0) {
+				commit('setHideInjuryGraph', true)
+			}
 			commit('setTypeOfInjuryData', res.data['injury_data'])
 		})
 		.catch((error) => {
@@ -102,6 +107,10 @@ const mutations = {
 
 	setTypeOfInjuryData(state, value) {
 		state.typeOfInjuryData = value
+	},
+
+	setHideInjuryGraph(state, value) {
+		state.hideInjuryGraph = value
 	},
 
 };
