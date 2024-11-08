@@ -70,6 +70,8 @@ const actions = {
 			console.log(res.data)
 			if (res.data['injury_data']['Israeli Count'] === 0 && res.data['injury_data']['Palestinian Count'] === 0) {
 				commit('setHideInjuryGraph', true)
+			}else {
+				commit('setHideInjuryGraph', false)
 			}
 			commit('setTypeOfInjuryData', res.data['injury_data'])
 		})

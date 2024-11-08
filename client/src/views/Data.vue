@@ -15,12 +15,14 @@
             <InjuryForm />
           </div>
         <div class="graph-area">
-          <Injurytypegraph />
+          <Injurytypegraph v-if="!hideInjuryGraph" />
+          <Hideinjurygraph />
         </div>
     </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import yearform from '@/components/datapage/Yearform.vue'
 import Avgage from '@/components/graphs/Avgage.vue'
 import Deathsbygroup from '@/components/graphs/Deathsbygroup.vue'
@@ -28,9 +30,15 @@ import Deathsbyregion from '@/components/graphs/Deathsbyregion.vue'
 import DeathsOfPeopleInEventGraph from '@/components/graphs/Deathsofpeopleinevent.vue'
 import InjuryForm from '@/components/datapage/Injuryform.vue'
 import Injurytypegraph from '@/components/graphs/Injurytypegraph.vue'
+import Hideinjurygraph from '@/components/support/Hideinjurygraph.vue'
 
 export default {
 	name: "Missing",
+  computed: {
+    ...mapGetters("datapage", [
+      "hideInjuryGraph",
+    ]),
+  },
 	components: {
     yearform,
 	  Avgage,
@@ -39,6 +47,7 @@ export default {
     DeathsOfPeopleInEventGraph, 
     InjuryForm,
     Injurytypegraph,
+    Hideinjurygraph
   },
 };
 
