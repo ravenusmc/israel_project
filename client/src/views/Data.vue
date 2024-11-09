@@ -16,7 +16,7 @@
           </div>
         <div class="graph-area">
           <Injurytypegraph v-if="!hideInjuryGraph" />
-          <Hideinjurygraph />
+          <Hideinjurygraph v-if="hideInjuryGraph"/>
         </div>
     </div>
 </template>

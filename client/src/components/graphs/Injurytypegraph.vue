@@ -46,11 +46,9 @@ export default {
         .range(["#0B90CA", "#FF5733"]);
 
       const data = this.typeOfInjuryData;
-      console.log(data); // Add this to verify data structure
 
       const pie = d3.pie().value(d => d[1]);
       const data_ready = pie(Object.entries(data));
-      console.log(data_ready); // Verify pie data structure
 
       const arc = d3.arc()
         .innerRadius(0)
@@ -86,27 +84,55 @@ export default {
         tooltip.style("opacity", 0);
       };
 
-      svg
+      // Bind data and create/update pie slices
+      const path = svg
         .selectAll("path")
-        .data(data_ready)
+        .data(data_ready, d => d.data[0]);
+
+      // Remove old elements
+      path.exit().remove();
+
+      // Append new elements with transition
+      path
         .enter()
         .append("path")
-        .attr("d", arc)
         .attr("fill", d => color(d.data[0]))
         .attr("stroke", "white")
         .style("stroke-width", "2px")
+        .attr("d", arc)
+        .each(function(d) { this._current = d; }) // Save initial state for transition
         .on("mouseover", showTooltip)
         .on("mousemove", moveTooltip)
-        .on("mouseleave", hideTooltip);
+        .on("mouseleave", hideTooltip)
+        .transition()
+        .duration(2000)
+        .attrTween("d", function(d) {
+          const i = d3.interpolate(this._current, d);
+          this._current = i(0);
+          return t => arc(i(t));
+        });
 
+      // Update existing elements with transition
+      path
+        .transition()
+        .duration(1500)
+        .attrTween("d", function(d) {
+          const i = d3.interpolate(this._current, d);
+          this._current = i(0);
+          return t => arc(i(t));
+        })
+        .attr("fill", d => color(d.data[0]));
+
+      // Add a title
       svg
         .append("text")
         .attr("text-anchor", "middle")
         .attr("y", -height / 2 + 20)
         .attr("font-size", "16px")
         .attr("font-weight", "bold")
-        .text("Distribution of Injury Types");
+        .text("Injury Type");
 
+      // Legend
       const legend = svg
         .append("g")
         .attr("transform", `translate(${-(width / 2 - 10)}, ${height / 2 - 50})`);
@@ -130,6 +156,7 @@ export default {
           .attr("alignment-baseline", "middle");
       });
     }
+
   }
 }
 
