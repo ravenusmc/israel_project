@@ -31,6 +31,7 @@ const data = {
 	],
 	typeOfInjuryData: {'Palestinian Count': 9408, 'Israeli Count': 438},
 	hideInjuryGraph: false,
+	typeOfAmmoData: {'Palestinain Deaths': 1385, 'Israeli Deaths': 127},
 };
 
 const getters = {
@@ -42,6 +43,7 @@ const getters = {
 	DeathsOfPeopleInEventData: (state) => state.DeathsOfPeopleInEventData,
 	typeOfInjuryData: (state) => state.typeOfInjuryData,
 	hideInjuryGraph: (state) => state.hideInjuryGraph,
+	typeOfAmmoData: (state) => state.typeOfAmmoData,
 };
 
 const actions = {
@@ -74,6 +76,7 @@ const actions = {
 				commit('setHideInjuryGraph', false)
 			}
 			commit('setTypeOfInjuryData', res.data['injury_data'])
+			commit('setTypeOfAmmoData', res.data['ammo_data'])
 		})
 		.catch((error) => {
 			console.log(error);
@@ -113,6 +116,10 @@ const mutations = {
 
 	setHideInjuryGraph(state, value) {
 		state.hideInjuryGraph = value
+	},
+
+	setTypeOfAmmoData(state, value) {
+		state.typeOfAmmoData = value
 	},
 
 };

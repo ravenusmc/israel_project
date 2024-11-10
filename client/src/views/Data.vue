@@ -17,6 +17,7 @@
         <div class="graph-area">
           <Injurytypegraph v-if="!hideInjuryGraph" />
           <Hideinjurygraph v-if="hideInjuryGraph"/>
+          <Commonammo />
         </div>
     </div>
 </template>
@@ -31,6 +32,7 @@ import DeathsOfPeopleInEventGraph from '@/components/graphs/Deathsofpeopleineven
 import InjuryForm from '@/components/datapage/Injuryform.vue'
 import Injurytypegraph from '@/components/graphs/Injurytypegraph.vue'
 import Hideinjurygraph from '@/components/support/Hideinjurygraph.vue'
+import Commonammo from '@/components/graphs/Commonammo.vue'
 
 export default {
 	name: "Missing",
@@ -47,7 +49,8 @@ export default {
     DeathsOfPeopleInEventGraph, 
     InjuryForm,
     Injurytypegraph,
-    Hideinjurygraph
+    Hideinjurygraph,
+    Commonammo, 
   },
 };
 

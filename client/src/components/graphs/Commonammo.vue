@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div ref="TypeofInjuryGraph"></div> 
+        <div ref="TypeofAmmoGraph"></div> 
     </div>
 </template>
 
@@ -12,40 +12,40 @@ export default {
     name: "TypeOfInjuryGraph",
     computed: {
     ...mapGetters("datapage", [
-      "typeOfInjuryData",
+      "typeOfAmmoData",
     ]),
   },
   watch: {
-    typeOfInjuryData: {
-      handler: "createInjuryTypePieChart",
+    typeOfAmmoData: {
+      handler: "createAmmoTypePieChart",
       deep: true,
     },
   },
   mounted() {
-    this.createInjuryTypePieChart();
+    this.createAmmoTypePieChart();
   },
   methods: {
-    createInjuryTypePieChart() {
+    createAmmoTypePieChart() {
       // Clear previous SVG elements
-      d3.select(this.$refs.TypeofInjuryGraph).select("svg").remove();
+      d3.select(this.$refs.TypeofAmmoGraph).select("svg").remove();
 
       const width = 460;
       const height = 400;
       const radius = Math.min(width, height) / 2 - 40;
 
       const svg = d3
-        .select(this.$refs.TypeofInjuryGraph)
+        .select(this.$refs.TypeofAmmoGraph)
         .append("svg")
         .attr("width", width)
         .attr("height", height)
         .append("g")
         .attr("transform", `translate(${width / 2}, ${height / 2})`);
-
+      
       const color = d3.scaleOrdinal()
-        .domain(["Palestinian Count", "Israeli Count"])
+        .domain(["Palestinain Deaths", "Israeli Deaths"])
         .range(["#0B90CA", "#FF5733"]);
-
-      const data = this.typeOfInjuryData;
+      
+      const data = this.typeOfAmmoData;
 
       const pie = d3.pie().value(d => d[1]);
       const data_ready = pie(Object.entries(data));
@@ -53,9 +53,9 @@ export default {
       const arc = d3.arc()
         .innerRadius(0)
         .outerRadius(radius);
-
+      
       const tooltip = d3
-        .select(this.$refs.TypeofInjuryGraph)
+        .select(this.$refs.TypeofAmmoGraph)
         .append("div")
         .style("opacity", 0)
         .attr("class", "tooltip")
@@ -73,7 +73,7 @@ export default {
           .style("left", event.pageX + 10 + "px")
           .style("top", event.pageY - 10 + "px");
       };
-
+    
       const moveTooltip = (event) => {
         tooltip
           .style("left", event.pageX + 10 + "px")
@@ -92,6 +92,26 @@ export default {
       // Remove old elements
       path.exit().remove();
 
+      // Append new elements with transition
+      path
+        .enter()
+        .append("path")
+        .attr("fill", d => color(d.data[0]))
+        .attr("stroke", "white")
+        .style("stroke-width", "2px")
+        .attr("d", arc)
+        .each(function(d) { this._current = d; }) // Save initial state for transition
+        .on("mouseover", showTooltip)
+        .on("mousemove", moveTooltip)
+        .on("mouseleave", hideTooltip)
+        .transition()
+        .duration(2000)
+        .attrTween("d", function(d) {
+          const i = d3.interpolate(this._current, d);
+          this._current = i(0);
+          return t => arc(i(t));
+        });
+      
       // Append new elements with transition
       path
         .enter()
@@ -130,7 +150,7 @@ export default {
         .attr("y", -height / 2 + 20)
         .attr("font-size", "16px")
         .attr("font-weight", "bold")
-        .text("Injury Type");
+        .text("Deaths by Selected Ammo Type");
 
       // Legend
       const legend = svg
@@ -155,6 +175,7 @@ export default {
           .style("font-size", "14px")
           .attr("alignment-baseline", "middle");
       });
+        
     }
   }
 }

@@ -12,7 +12,6 @@ app.config.from_object(__name__)
 # enable CORS
 CORS(app, resources={r'/*': {'origins': '*'}})
 
-# route to set up new user
 @app.route('/getDataForGraphs', methods=['GET', 'POST'])
 def getDataForGraphs():
     if request.method == 'POST':
@@ -30,7 +29,6 @@ def getDataForGraphs():
         data_dictionary['took_part_in_event'] = took_part_in_event
         return jsonify(data_dictionary)
 
-# route to set up new user
 @app.route('/getDataForGraphsTwo', methods=['GET', 'POST'])
 def getDataForGraphsTwo():
     if request.method == 'POST':
@@ -39,8 +37,11 @@ def getDataForGraphsTwo():
         post_data = request.get_json()
         year = int(post_data['yearTwo'])
         injury = post_data['injury']
+        ammo = post_data['ammo']
         injury_data = get_data_object.graph_of_common_injury(year, injury)
         data_dictionary_second_set_graphs['injury_data'] = injury_data
+        ammo_data = get_data_object.common_ammunition_used(year, ammo)
+        data_dictionary_second_set_graphs['ammo_data'] = ammo_data
         return jsonify(data_dictionary_second_set_graphs)
 
 
