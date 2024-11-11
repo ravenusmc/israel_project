@@ -104,19 +104,18 @@ class ExamineData():
     
     # I think that for this graph I want to filter by Israeli and Palestinian and then 
     # see count of who was killed. 
-    def what_killed_individual(self, year):
-        columns = ['Killed by', 'Palestinian Count', 'Israeli Count']
-        data = [columns]
+    def what_killed_individual(self, year, killed_by):
+        columns = ['Killed by', 'Palestinian Deaths', 'Israeli Deaths']
+        killed_by_data = {}
         df_filtered_by_year = self.data[self.data['date_of_death'].dt.year <= year]
         df_palestinian = df_filtered_by_year[df_filtered_by_year['citizenship'] == 'Palestinian']
         df_israeli = df_filtered_by_year[df_filtered_by_year['citizenship'] == 'Israeli']
-        killed_by_list = ['Israeli security forces', 'Palestinian civilians', 'Israeli civilians']
-        for kill_by in killed_by_list:
-            p_count = df_palestinian[df_palestinian['killed_by'] == kill_by].shape[0]
-            i_count = df_israeli[df_israeli['killed_by'] == kill_by].shape[0]
-            data.append([kill_by, p_count, i_count])
-        print(data)
-        return data 
+        p_count = df_palestinian[df_palestinian['killed_by'] == killed_by].shape[0]
+        i_count = df_israeli[df_israeli['killed_by'] == killed_by].shape[0]
+        killed_by_data['Palestinian Deaths'] = p_count
+        killed_by_data['Israeli Deaths'] = i_count
+        #{'Palestinain Deaths': 1385, 'Israeli Deaths': 127}
+        return killed_by_data 
 
     def average_age_of_killed_by_year(self, year):
         pass
@@ -143,6 +142,6 @@ class ExamineData():
 
     
 death_dataset = ExamineData()
-print(death_dataset.common_ammunition_used(2023, 'live ammunition'))
+print(death_dataset.what_killed_individual(2023, 'Israeli security forces'))
 
 

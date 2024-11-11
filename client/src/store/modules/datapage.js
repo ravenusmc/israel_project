@@ -32,6 +32,7 @@ const data = {
 	typeOfInjuryData: {'Palestinian Count': 9408, 'Israeli Count': 438},
 	hideInjuryGraph: false,
 	typeOfAmmoData: {'Palestinain Deaths': 1385, 'Israeli Deaths': 127},
+	killedByData: {'Palestinian Deaths': 9996, 'Israeli Deaths': 1},
 };
 
 const getters = {
@@ -44,6 +45,7 @@ const getters = {
 	typeOfInjuryData: (state) => state.typeOfInjuryData,
 	hideInjuryGraph: (state) => state.hideInjuryGraph,
 	typeOfAmmoData: (state) => state.typeOfAmmoData,
+	killedByData: (state) => state.killedByData,
 };
 
 const actions = {
@@ -68,8 +70,7 @@ const actions = {
 		const path = 'http://localhost:5000/getDataForGraphsTwo';
 		axios.post(path, payload)
 		.then((res) => {
-      console.log(res.data)
-			console.log(res.data)
+      		console.log(res.data)
 			if (res.data['injury_data']['Israeli Count'] === 0 && res.data['injury_data']['Palestinian Count'] === 0) {
 				commit('setHideInjuryGraph', true)
 			}else {
@@ -122,6 +123,9 @@ const mutations = {
 		state.typeOfAmmoData = value
 	},
 
+	setKilledByData(state, value) {
+		state.killedByData = value 
+	}, 
 };
 
 export default {

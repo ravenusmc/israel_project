@@ -15,9 +15,14 @@
             <InjuryForm />
           </div>
         <div class="graph-area">
-          <Injurytypegraph v-if="!hideInjuryGraph" />
-          <Hideinjurygraph v-if="hideInjuryGraph"/>
-          <Commonammo />
+          <div>
+            <Injurytypegraph v-if="!hideInjuryGraph" />
+            <Hideinjurygraph v-if="hideInjuryGraph"/>
+          </div>
+          <div>
+            <Commonammo v-if="!hideInjuryGraph"/>
+            <Hideinjurygraph v-if="hideInjuryGraph"/>
+          </div>
         </div>
     </div>
 </template>

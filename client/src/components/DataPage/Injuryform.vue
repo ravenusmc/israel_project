@@ -8,16 +8,23 @@
           </div>
           <label for="Injury">Select Injury:</label>
           <select v-model="selectedInjury">
-            <option disabled value="">Please select one</option>
+            <option disabled>Please select one</option>
             <option v-for="injury in injuries" :key="injury" :value="injury">
               {{ injury }}
             </option>
           </select>
           <label for="ammo">Select Ammunition:</label>
           <select v-model="selectedAmmo">
-            <option disabled value="">Please select one</option>
+            <option disabled>Please select one</option>
             <option v-for="ammo in ammunitions" :key="ammo" :value="ammo">
               {{ ammo }}
+            </option>
+          </select>
+          <label for="ammo">Select Group:</label>
+          <select v-model="selectedKilledBy">
+            <option disabled>Please select one</option>
+            <option v-for="group in killedByGroups" :key="group" :value="group">
+              {{ group }}
             </option>
           </select>
             <div class="form-group">
@@ -46,6 +53,8 @@ export default {
       'teargas canister', 'flare bomb', 'sponge rounds', 'mortar fire', 
       'grad rocket', 'flechette shells', 'phosphorus shell', 'Qassam rocket', 
       'explosive belt', 'grenade', 'car bomb'],
+      selectedKilledBy: 'Israeli security forces',
+      killedByGroups: ['Israeli security forces', 'Palestinian civilians', 'Israeli civilians'],
     };
   },
   methods: {
@@ -61,6 +70,7 @@ export default {
           yearTwo: this.yearTwo,
           injury: this.selectedInjury,
           ammo: this.selectedAmmo,
+          killedByGroup: this.selectedKilledBy,
         };
         this.submitSelectedInjuryAndYearToServer({ payload });
       }
@@ -68,3 +78,79 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+/* Base styles */
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.form-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 20vh;
+  background-color: #f5f6fa;
+}
+
+form {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px 30px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Labels */
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* Input fields and selects */
+input[type="text"],
+select {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+input[type="text"]:focus,
+select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.25);
+}
+
+/* Submit button */
+.styled-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.styled-button:hover {
+  background-color: #0056b3;
+}
+
+.styled-button:focus {
+  outline: none;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}
+</style>
