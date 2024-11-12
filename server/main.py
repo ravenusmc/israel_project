@@ -35,13 +35,17 @@ def getDataForGraphsTwo():
         data_dictionary_second_set_graphs = {}
         get_data_object = ExamineData()
         post_data = request.get_json()
+        print(post_data)
         year = int(post_data['yearTwo'])
         injury = post_data['injury']
         ammo = post_data['ammo']
+        killed_by = post_data['killedByGroup']
         injury_data = get_data_object.graph_of_common_injury(year, injury)
         data_dictionary_second_set_graphs['injury_data'] = injury_data
         ammo_data = get_data_object.common_ammunition_used(year, ammo)
         data_dictionary_second_set_graphs['ammo_data'] = ammo_data
+        killed_by_data = get_data_object.what_killed_individual(year, killed_by)
+        data_dictionary_second_set_graphs['killed_by_data'] = killed_by_data
         return jsonify(data_dictionary_second_set_graphs)
 
 

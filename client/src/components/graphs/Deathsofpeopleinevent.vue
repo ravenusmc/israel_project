@@ -147,8 +147,6 @@ export default {
         .attr("font-weight", "bold")
         .text("Deaths of People at Event");
 
-
-
     }
   }
 }

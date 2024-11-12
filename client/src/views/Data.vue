@@ -23,6 +23,10 @@
             <Commonammo v-if="!hideInjuryGraph"/>
             <Hideinjurygraph v-if="hideInjuryGraph"/>
           </div>
+          <div>
+            <Whatkilled v-if="!hideInjuryGraph"/>
+            <Hideinjurygraph v-if="hideInjuryGraph"/>
+          </div>
         </div>
     </div>
 </template>
@@ -38,6 +42,7 @@ import InjuryForm from '@/components/datapage/Injuryform.vue'
 import Injurytypegraph from '@/components/graphs/Injurytypegraph.vue'
 import Hideinjurygraph from '@/components/support/Hideinjurygraph.vue'
 import Commonammo from '@/components/graphs/Commonammo.vue'
+import Whatkilled from '@/components/graphs/Whatkilled.vue'
 
 export default {
 	name: "Missing",
@@ -56,6 +61,7 @@ export default {
     Injurytypegraph,
     Hideinjurygraph,
     Commonammo, 
+    Whatkilled,
   },
 };
 

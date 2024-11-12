@@ -59,6 +59,7 @@ const actions = {
 				commit('setAverageAgaData', res.data['average_age_data'])
 				commit('setDeathsByGroupData', res.data['deaths_by_group_data'])
 				commit('setDeathsByRegionData', res.data['death_count_by_region'])
+				commit('setDeathsOfPeopleInEventData', res.data['took_part_in_event'])
 			})
 			.catch((error) => {
 				console.log(error);
@@ -78,6 +79,7 @@ const actions = {
 			}
 			commit('setTypeOfInjuryData', res.data['injury_data'])
 			commit('setTypeOfAmmoData', res.data['ammo_data'])
+			commit('setKilledByData', res.data['killed_by_data'])
 		})
 		.catch((error) => {
 			console.log(error);

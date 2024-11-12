@@ -114,7 +114,6 @@ class ExamineData():
         i_count = df_israeli[df_israeli['killed_by'] == killed_by].shape[0]
         killed_by_data['Palestinian Deaths'] = p_count
         killed_by_data['Israeli Deaths'] = i_count
-        #{'Palestinain Deaths': 1385, 'Israeli Deaths': 127}
         return killed_by_data 
 
     def average_age_of_killed_by_year(self, year):
