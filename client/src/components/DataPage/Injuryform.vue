@@ -2,31 +2,37 @@
     <div>
       <div class='form-div'>
         <form>
-          <div>
-            <label for="year">Enter Year:</label>
-            <input v-model="yearTwo" />
+          <div class="form-selection-area">
+            <div>
+              <div>
+                <label for="year">Enter Year:</label>
+                <input v-model="yearTwo" />
+              </div>
+              <label for="Injury">Select Injury:</label>
+              <select v-model="selectedInjury">
+                <option disabled>Please select one</option>
+                <option v-for="injury in injuries" :key="injury" :value="injury">
+                  {{ injury }}
+                </option>
+              </select>
+            </div>
+            <div class="second-options">
+              <label for="ammo">Select Ammunition:</label>
+                <select v-model="selectedAmmo">
+                  <option disabled>Please select one</option>
+                  <option v-for="ammo in ammunitions" :key="ammo" :value="ammo">
+                    {{ ammo }}
+                  </option>
+                </select>
+                <label for="ammo">Select Group:</label>
+                <select v-model="selectedKilledBy">
+                  <option disabled>Please select one</option>
+                  <option v-for="group in killedByGroups" :key="group" :value="group">
+                    {{ group }}
+                  </option>
+                </select>
+            </div>
           </div>
-          <label for="Injury">Select Injury:</label>
-          <select v-model="selectedInjury">
-            <option disabled>Please select one</option>
-            <option v-for="injury in injuries" :key="injury" :value="injury">
-              {{ injury }}
-            </option>
-          </select>
-          <label for="ammo">Select Ammunition:</label>
-          <select v-model="selectedAmmo">
-            <option disabled>Please select one</option>
-            <option v-for="ammo in ammunitions" :key="ammo" :value="ammo">
-              {{ ammo }}
-            </option>
-          </select>
-          <label for="ammo">Select Group:</label>
-          <select v-model="selectedKilledBy">
-            <option disabled>Please select one</option>
-            <option v-for="group in killedByGroups" :key="group" :value="group">
-              {{ group }}
-            </option>
-          </select>
             <div class="form-group">
               <button class='styled-button' type="button" @click="submitInjuryAndYearToServer">Submit</button>
             </div>
@@ -100,9 +106,18 @@ form {
   background-color: #fff;
   border-radius: 8px;
   padding: 20px 30px;
-  max-width: 400px;
+  max-width: 550px;
   width: 100%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-selection-area {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.second-options {
+  margin-left: 15px;
 }
 
 /* Labels */
