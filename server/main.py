@@ -29,6 +29,8 @@ def getDataForGraphs():
         data_dictionary['took_part_in_event'] = took_part_in_event
         return jsonify(data_dictionary)
 
+# I decided to build this route for another graph which I realized I'd use it for two 
+# other graphs as well - the pie charts. 
 @app.route('/getDataForGraphsTwo', methods=['GET', 'POST'])
 def getDataForGraphsTwo():
     if request.method == 'POST':
