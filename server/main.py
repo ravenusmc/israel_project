@@ -35,7 +35,6 @@ def getDataForGraphsTwo():
         data_dictionary_second_set_graphs = {}
         get_data_object = ExamineData()
         post_data = request.get_json()
-        print(post_data)
         year = int(post_data['yearTwo'])
         injury = post_data['injury']
         ammo = post_data['ammo']
