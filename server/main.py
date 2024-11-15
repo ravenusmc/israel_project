@@ -12,6 +12,7 @@ app.config.from_object(__name__)
 # enable CORS
 CORS(app, resources={r'/*': {'origins': '*'}})
 
+# This route will handle the bar chart graphs. 
 @app.route('/getDataForGraphs', methods=['GET', 'POST'])
 def getDataForGraphs():
     if request.method == 'POST':
