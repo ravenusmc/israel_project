@@ -1,7 +1,6 @@
 <template>
     <div>
         <div class="main-pic">
-            Hello
         </div>
     </div>
 </template>
@@ -21,6 +20,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 50px 0 50px 0;
 }
 
 </style>
